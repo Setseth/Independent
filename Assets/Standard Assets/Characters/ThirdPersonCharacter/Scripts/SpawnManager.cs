@@ -7,10 +7,12 @@ public class SpawnManager : MonoBehaviour
     public Vector3[] boxSpawnLocations;
     public Vector3[] boxSpawnRotations;
     public GameObject boxPrefab;
+    private PlayerController playerCtrl; 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnSmallBox", 3.0f, 1.5f);
+        playerCtrl = GameObject.Find("ThirdPersonController").GetComponent<PlayerController>(); 
     }
 
     // Update is called once per frame
@@ -20,10 +22,14 @@ public class SpawnManager : MonoBehaviour
     }
 
     void SpawnSmallBox()
+    
     {
-        int boxPrefabIndex = Random.Range(0, boxSpawnLocations.Length);
-        Instantiate(boxPrefab, boxSpawnLocations[boxPrefabIndex],
-          Quaternion.Euler(boxSpawnRotations[boxPrefabIndex]));
+        if (playerCtrl.gameOver == false)
+        {
+            int boxPrefabIndex = Random.Range(0, boxSpawnLocations.Length);
+            Instantiate(boxPrefab, boxSpawnLocations[boxPrefabIndex],
+              Quaternion.Euler(boxSpawnRotations[boxPrefabIndex]));
+        }
     }   
 
 }

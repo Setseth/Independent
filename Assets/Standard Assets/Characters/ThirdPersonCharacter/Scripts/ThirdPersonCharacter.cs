@@ -28,9 +28,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+        public void OnDisable()
+        {
+			Debug.Log("DisableThirdPersonCharacter");
+			m_Animator.SetBool("OnGround", true);
+			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.0f, Time.deltaTime);
+			//m_Animator.enabled = false;
+			m_Rigidbody.velocity = Vector3.zero;
+        }
 
-
-		void Start()
+        void Start()
 		{
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
