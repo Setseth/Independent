@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     private AudioSource asPlayer;
 
+    bool hasPowerUp = false; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
             gameOver = true;
         }
+        if (other.CompareTag("PowerUp"))
+        {
+            hasPowerUp = true;
+            Destroy(other.gameObject); 
+            jumpforce = 3;
+            StartCoroutine(PowerUpCountdown());
+        }
+    }
+    IEnumerator PowerUpCountdown()
+    {
+        yield return new WaitForSeconds(8);
+        jumpforce = 1;
+        hasPowerUp = false;
     }
 }
 
