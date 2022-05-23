@@ -7,11 +7,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
-		[SerializeField] float m_MovingTurnSpeed = 180;
+		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 60f;
+		[SerializeField] float m_JumpPower = 12f;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
-		[SerializeField] float m_RunCycleLegOffset = 0.5f; //specific to the character in sample assets, will need to be modified to work with others
+		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
@@ -28,16 +28,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-        public void OnDisable()
-        {
-			Debug.Log("DisableThirdPersonCharacter");
-			m_Animator.SetBool("OnGround", true);
-			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.0f, Time.deltaTime);
-			//m_Animator.enabled = false;
-			m_Rigidbody.velocity = Vector3.zero;
-        }
 
-        void Start()
+
+		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();

@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerUp = true;
             Destroy(other.gameObject); 
-            jumpforce = 3;
+            jumpforce = 5;
             StartCoroutine(PowerUpCountdown());
         }
     }
