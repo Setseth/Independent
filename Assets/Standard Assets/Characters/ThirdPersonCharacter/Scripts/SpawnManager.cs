@@ -29,18 +29,18 @@ public class SpawnManager : MonoBehaviour
             int boxRandomNumber = Random.Range(1, 600);
             if(boxRandomNumber < 300)
             {
-                Instantiate(boxPrefab, boxSpawnLocations[2],
-                 Quaternion.Euler(boxSpawnRotations[2]));
+                Instantiate(boxPrefab, boxSpawnLocations[0],
+                 Quaternion.Euler(boxSpawnRotations[0]));
             }
             else if (boxRandomNumber < 500)
             {
-                Instantiate(boxPrefab, boxSpawnLocations[1],
-                 Quaternion.Euler(boxSpawnRotations[1]));
+                Instantiate(boxPrefab, boxSpawnLocations[2],
+                 Quaternion.Euler(boxSpawnRotations[2]));
             }
             else
             {
-                Instantiate(boxPrefab, boxSpawnLocations[0],
-                Quaternion.Euler(boxSpawnRotations[0]));
+                Instantiate(boxPrefab, boxSpawnLocations[1],
+                Quaternion.Euler(boxSpawnRotations[1]));
             }
         }
     }   
