@@ -7,17 +7,23 @@ public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI status;
-    private int orb = 0; 
+    public TextMeshProUGUI failure; 
+    private bool orb = false; 
 
     // Start is called before the first frame update
     void Start()
     {
-        UpdateStatus(0);
+        UpdateStatus(false);
     }
 
-    private void UpdateStatus(int statusDelta)
+    public void GameOver()
     {
-        status += statusDelta;
-        status.text = "Orb: " + orb;
+        failure.gameObject.SetActive(true);
+    }
+
+    public void UpdateStatus(bool state)
+    {
+        orb = state;
+        status.text = "Orb: " + orb.ToString();
     }
 }

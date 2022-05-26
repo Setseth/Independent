@@ -51,14 +51,14 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerUp = true;
             Destroy(other.gameObject); 
-            jumpforce = 5;
+            jumpforce = 12;
             StartCoroutine(PowerUpCountdown());
         }
     }
     IEnumerator PowerUpCountdown()
     {
-        yield return new WaitForSeconds(8);
-        jumpforce = 1;
+        yield return new WaitForSeconds(15);
+        jumpforce = 3;
         hasPowerUp = false;
     }
 }

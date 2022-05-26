@@ -6,10 +6,12 @@ public class EndPlatform : MonoBehaviour
 {
     public GameObject orb;
     private Renderer orbRenderer;
+    private GameManager gameManager; 
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         orbRenderer = orb.GetComponent<Renderer>();
     }
 
@@ -25,7 +27,10 @@ public class EndPlatform : MonoBehaviour
         {
             Debug.Log("PlatformOnCollisionEnter");
             StartCoroutine(Fade());
+
+            gameManager.UpdateStatus(true);
         }
+    
     }
     IEnumerator Fade()
     {
